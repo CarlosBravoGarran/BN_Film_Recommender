@@ -40,10 +40,12 @@ plt.show()
 # Inferencia de ejemplo
 infer = VariableElimination(model)
 
+evidence = {'EdadUsuario': 'mayor', 'Hora': 'noche', 'DiaSemana': 'fin_semana'}
+
 query = infer.query(
     variables=['GeneroPrograma'],
-    evidence={'EdadUsuario': 'mayor', 'Hora': 'noche', 'DiaSemana': 'fin_semana'}
+    evidence=evidence
 )
 
-print("\nProbabilidades inferidas para 'GeneroPrograma' dado el contexto:")
+print("\nGénero recomendado para usuario %s por la %s en %s:" % (evidence["EdadUsuario"], evidence["Hora"], evidence["DiaSemana"]))
 print(query)
