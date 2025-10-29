@@ -416,3 +416,28 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Virtual Environments
+.vs/
+.env/
+.venv/
+env/
+venv/
+
+# Datasets
+*.csv
+*.tsv
+*.data
+*.h5
+*.hdf5
+*.parquet
+*.pkl
+*.joblib
+*.npz
+*.npy
+*.pth
+*.pt
+*.ckpt
+*.model
+*.bin 
+*.txt
