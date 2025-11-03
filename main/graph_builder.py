@@ -7,7 +7,7 @@ de `graph_gen.py` para que pueda reutilizarse desde otros scripts (p. ej. infere
 """
 
 import pandas as pd
-from pgmpy.estimators import HillClimbSearch, BIC, BayesianEstimator
+from pgmpy.estimators import HillClimbSearch, BIC, BayesianEstimator, BDeu
 from pgmpy.models import DiscreteBayesianNetwork
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -20,11 +20,11 @@ def load_data(path: str) -> pd.DataFrame:
 
 
 def learn_structure(df: pd.DataFrame):
-    """Aprende la estructura usando Hill Climb y BIC.
+    """Aprende la estructura usando Hill Climb y BDeu.
     Devuelve el objeto de modelo (networkx.DiGraph-like de pgmpy) con los arcos.
     """
     hc = HillClimbSearch(df)
-    best_model = hc.estimate(scoring_method=BIC(df))
+    best_model = hc.estimate(scoring_method=BDeu(df, equivalent_sample_size=100))
     return best_model
 
 
@@ -66,7 +66,7 @@ def build_and_fit_model(
     return model, df
 
 
-def visualize_model(model: DiscreteBayesianNetwork, figsize=(8, 6)) -> None:
+def visualize_model(model: DiscreteBayesianNetwork, figsize=(10, 8)) -> None:
     """Dibuja la red usando networkx/matplotlib.
     No muestra la figura si se ejecuta en un entorno sin display; caller decide.
     """
@@ -79,7 +79,7 @@ def visualize_model(model: DiscreteBayesianNetwork, figsize=(8, 6)) -> None:
         G,
         pos,
         with_labels=True,
-        node_size=3000,
+        node_size=1000,
         node_color="skyblue",
         font_size=10,
         arrowsize=20,
@@ -122,6 +122,6 @@ def save_cpds_to_txt(model, path: str = "model_cpds.txt") -> None:
 
 
 if __name__ == "__main__":
-    model, df = build_and_fit_model(csv_path="basic_nodes/tv_bn_dataset.csv")
+    model, df = build_and_fit_model(csv_path="../eleven_nodes/tv_bn_dataset.csv")
     save_cpds_to_txt(model, path="model_cpds.txt")
     

@@ -37,7 +37,7 @@ if __name__ == "__main__":
     else:
         model, _ = build_and_fit_model(csv_path="tv_bn_dataset.csv", save_model_path=model_path, visualize=False)
 
-    evidence = {"EdadUsuario": "mayor", "Hora": "noche", "DiaSemana": "fin_semana"}
+    evidence = {"EdadUsuario": "mayor", "Hora": "noche", "DiaSemana": "fin_semana", "DuracionPrograma": "media", "PopularidadPrograma": "alta", "InteresPrevio": "entretenimiento"}
     res = query_model(model, variables=["GeneroPrograma"], evidence=evidence)
-    print("\nGénero recomendado para usuario %s por la %s en %s:" % (evidence["EdadUsuario"], evidence["Hora"], evidence["DiaSemana"]))
+    print("\nGénero recomendado para usuario:")
     print(res)
