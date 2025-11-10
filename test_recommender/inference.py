@@ -35,7 +35,7 @@ if __name__ == "__main__":
     if os.path.exists(model_path):
         model = load_model(model_path)
     else:
-        model, _ = build_and_fit_model(csv_path="tv_bn_dataset.csv", save_model_path=model_path, visualize=False)
+        model, _ = build_and_fit_model(csv_path="eleven_nodes/tv_bn_dataset.csv", save_model_path=model_path, visualize=False)
 
     evidence = {"EdadUsuario": "mayor", "Hora": "noche", "DiaSemana": "fin_semana", "DuracionPrograma": "media", "PopularidadPrograma": "alta", "InteresPrevio": "entretenimiento"}
     res = query_model(model, variables=["GeneroPrograma"], evidence=evidence)
