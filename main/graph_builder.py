@@ -41,7 +41,7 @@ def build_and_fit_model(
     save_edges_path: str = "best_model_edges.csv",
     save_model_path: str = "model.pkl",
     prior_type: str = "BDeu",
-    equivalent_sample_size: int = 10,
+    equivalent_sample_size: int = 100,
     visualize: bool = True,
 ) -> tuple[DiscreteBayesianNetwork, pd.DataFrame]:
     """Flujo completo: carga datos, aprende estructura, crea modelo, ajusta CPDs.
@@ -122,6 +122,6 @@ def save_cpds_to_txt(model, path: str = "model_cpds.txt") -> None:
 
 
 if __name__ == "__main__":
-    model, df = build_and_fit_model(csv_path="../eleven_nodes/tv_bn_dataset.csv")
+    model, df = build_and_fit_model(csv_path="eleven_nodes/tv_bn_dataset.csv")
     save_cpds_to_txt(model, path="model_cpds.txt")
     
