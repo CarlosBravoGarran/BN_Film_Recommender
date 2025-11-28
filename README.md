@@ -1,2 +1,2 @@
-# BN_Film_Recommender
-Film recommernder based on Bayesian Networks
+# BN_TV_Recommender
+TV platforms recommender based on Bayesian Networks
