@@ -122,6 +122,6 @@ def save_cpds_to_txt(model, path: str = "model_cpds.txt") -> None:
 
 
 if __name__ == "__main__":
-    model, df = build_and_fit_model(csv_path="eleven_nodes/tv_bn_dataset.csv")
+    model, df = build_and_fit_model(csv_path="main/tv_bn_dataset.csv")
     save_cpds_to_txt(model, path="model_cpds.txt")
     
